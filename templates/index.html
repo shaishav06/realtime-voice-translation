@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input MP4 and MP3 files</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Input MP4 and MP3 files</h1>
+      <form action="/" method="post" enctype="multipart/form-data">
+        <div class="input-wrapper">
+          <input type="file" id="file-input" name="file-input" accept=".mp3, .mp4">
+          <label for="file-input"><span>Choose a file</span></label>
+        </div>
+        <br>
+        <label for = "language" >Translate to :</label>
+        <select name="language">
+          <option value="es">Spanish </option>
+          <option value="fr">French </option>
+          <option value="de">German </option>
+          <option value="hi">Hindi </option>
+          <option value="ar">Arabic </option>
+          <option value="zh">Chinese </option>
+          <option value="ru">Russian </option>
+          <option value="pt">Portuguese </option>
+          <option value="ur">Urdu   </option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <form  method="post" action = "/download/transcription/txt" enctype ="multipart/form-data" >
+
+        <button type="submit" id="submit" formaction="/download/transcription/txt" > Download Transcription </button>
+      
+        </form>
+       <form  method="post" action = "/download/translation/txt" enctype ="multipart/form-data" >
+      
+        <button type="submit" id="submit" formaction="/download/translation/txt" > Download Translation </button>
+      
+        </form>
+      <div class="output-container">
+        <div class="output-text">
+   Transcription :   {{Transcription}}  
+
+          <br> <br> <br>
+
+    Translation : {{Translation}}
+        </div>
+    </div>
+    <script>
+      const fileInput = document.querySelector('#file-input');
+      const fileName = document.querySelector('#file-input');
+
+      fileInput.addEventListener('change', () => {
+        fileName.textContent = fileInput.files[0].name;
+      });
+    </script>
+  </form>
+
+
+  </body>
+</html>
